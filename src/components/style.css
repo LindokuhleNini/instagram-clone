@@ -1,0 +1,328 @@
+/* Apply the Proxima Nova font to an element */
+body {
+  font-family: "-apple-system, BlinkMacSystemFont, " Segoe UI
+    ", Roboto, Helvetica, Arial, sans-serif";
+}
+
+.main-div {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr 28%; /* Three columns: auto for Side Menu, 1fr for central div, auto for right div */
+  grid-template-areas: "side-menu search-overlay";
+  height: 100vh; /* 100% of the viewport height */
+  flex-direction: row;
+}
+
+.central-div {
+  grid-column: 2;
+  background-color: #ffffff; /* Add a background color for the central div */
+  padding: 16px; /* Add padding to the central div */
+  justify-self: center; /* Center horizontally */
+  margin-left: 300px;
+}
+
+.right-div {
+  grid-column: 3;
+  padding: 16px; /* Add padding to the right div */
+}
+
+.logo {
+  width: 100px;
+  padding: 20px;
+}
+
+.side-menu {
+  position: fixed;
+  grid-column: 1;
+  height: 100vh;
+  border-right: 1px solid #bfbebe;
+}
+
+.vertical-list {
+  display: flex;
+  flex-direction: column;
+  margin-left: -20px;
+}
+
+.vertical-list ul li {
+  list-style-type: none;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.vertical-list ul li a {
+  text-decoration: none;
+  color: black;
+  margin-left: 15px; /* Add space between icon and label */
+}
+
+.icon-label-wrapper {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  border-radius: 10px;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.icon-label-wrapper:hover {
+  background-color: #ebe9e9; /* Grey hover background color */
+}
+
+/* Style for the last item without specialClass */
+li:not(.last-item) {
+  margin-bottom: 35px; /* Adjust the gap as needed */
+}
+
+/* Additional styling for the last two items with specialClass */
+.last-item {
+  font-weight: bold; /* Example: Make text bold for the last two items */
+  color: #ff5733; /* Example: Change text color for the last two items */
+}
+
+.stories-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 8px; /* Add padding around the stories container */
+}
+
+.story {
+  text-align: center;
+  margin-right: 16px; /* Add space between stories */
+  flex-shrink: 0; /* Prevent stories from shrinking */
+}
+
+.story-image {
+  width: 64px; /* Set width for the story image */
+  height: 64px; /* Set height for the story image */
+  border-radius: 50%; /* Make the image circular */
+  object-fit: cover; /* Ensure the image covers the circular area */
+}
+
+.story-text {
+  margin-top: 4px; /* Add space between image and text */
+  font-size: 12px; /* Adjust font size for the text */
+}
+
+.post-container {
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  align-items: center; /* Center the content horizontally */
+  width: 468px;
+  margin: 0 auto;
+  border-bottom: 1px solid #ccc;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.username {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.three-dots {
+  margin-left: auto; /* Push the three dots to the right */
+}
+
+.post-content {
+  margin-bottom: 8px;
+  display: grid;
+  place-items: center;
+}
+
+.post-image {
+  width: 468px;
+  border-radius: 8px;
+}
+
+.action-icons {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.icon {
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.save-icon {
+  margin-left: auto; /* Push the save icon to the right */
+  cursor: pointer;
+}
+
+.like-count {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.post-caption {
+  margin-bottom: 8px;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.switch-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #0095f6;
+  font-weight: bold;
+}
+
+.suggestions-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.suggested-text {
+  font-weight: bold;
+  margin-top: 16px; /* Add spacing between profile info and suggested text */
+}
+
+.see-all-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: auto; /* Push the see all button to the right */
+  margin-top: 16px;
+  justify-self: center;
+}
+
+.follow-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #0095f6;
+  font-weight: bold;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 80px; /* Width of the side-menu */
+  width: 0;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  transition: width 0.1s ease-in-out;
+}
+
+.overlay.show {
+  width: 400px;
+}
+
+.search-container {
+  background-color: #fff;
+  border: 1px solid #e6e3e3;
+  border-radius: 15px;
+  padding: 20px;
+  height: 100vh;
+}
+
+.search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 25px;
+  margin-right: 10px;
+  border-radius: 10px;
+  width: 320px;
+  height: 25px;
+  justify-self: center;
+  border: 1px solid #e6e3e3;
+  background-color: #efefef;
+}
+
+.search-button,
+.close-button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-button {
+  margin-right: 10px;
+}
+
+.recent-searches {
+  align-self: center;
+}
+
+.recent-searches ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.recent-searches button {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.explore-page {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto auto auto; /* Three columns: auto for Side Menu, 1fr for central div, auto for right div */
+  height: 100vh; /* 100% of the viewport height */
+  flex-direction: column;
+  justify-self: center; /* Center horizontally */
+  margin-left: 300px;
+}
+
+.explore-content {
+  width: 317px;
+  height: auto;
+}
