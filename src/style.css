@@ -46,12 +46,26 @@ body {
 
 .vertical-list ul li {
   list-style-type: none;
-  margin-bottom: 10px;
+  margin-bottom: -10px;
   margin-right: 10px;
   font-size: 16px;
 }
 
 .vertical-list ul li a {
+  text-decoration: none;
+  color: black;
+  margin-left: 15px; /* Add space between icon and label */
+}
+
+.vertical-list ul li a:active {
+  font-weight: bold;
+}
+
+.search {
+  margin-top: 15px;
+}
+
+.label {
   text-decoration: none;
   color: black;
   margin-left: 15px; /* Add space between icon and label */
@@ -64,15 +78,19 @@ body {
   border-radius: 10px;
   padding-left: 10px;
   cursor: pointer;
+  margin-bottom: -15px;
 }
 
 .icon-label-wrapper:hover {
   background-color: #ebe9e9; /* Grey hover background color */
 }
 
-/* Style for the last item without specialClass */
+.icon-label-wrapper:enabled {
+  font-weight: bold; /* Make the text bold */
+}
+
 li:not(.last-item) {
-  margin-bottom: 35px; /* Adjust the gap as needed */
+  margin-bottom: 35px;
 }
 
 /* Additional styling for the last two items with specialClass */
@@ -228,6 +246,8 @@ li:not(.last-item) {
   margin-left: auto; /* Push the see all button to the right */
   margin-top: 16px;
   justify-self: center;
+  text-decoration: none;
+  color: rgb(120, 119, 119);
 }
 
 .follow-button {
@@ -313,16 +333,75 @@ li:not(.last-item) {
 }
 
 .explore-page {
-  margin: 0;
+  margin-top: 15px;
   display: grid;
   grid-template-columns: auto auto auto; /* Three columns: auto for Side Menu, 1fr for central div, auto for right div */
   height: 100vh; /* 100% of the viewport height */
   flex-direction: column;
   justify-self: center; /* Center horizontally */
-  margin-left: 300px;
+  margin-left: 260px;
+  padding: 15px;
 }
 
 .explore-content {
+  display: flex;
   width: 317px;
-  height: auto;
+  height: 320px;
+}
+
+.suggested-div {
+  display: flex;
+  padding: 20px 3px;
+  flex-direction: column;
+  margin-left: 570px;
+  margin-right: 370px;
+}
+
+.message-container {
+  display: grid;
+  grid-template-columns: 400px auto; /* Three columns: auto for Side Menu, 1fr for central div, auto for right div */
+  height: 100vh; /* 100% of the viewport height */
+  flex-direction: row;
+  margin-left: 250px;
+  overflow: hidden;
+}
+
+.left-msg-div {
+  grid-column: 1;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.msg-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-self: center;
+}
+
+.right-msg-div {
+  background-color: #bfbebe;
+}
+
+.msg-header2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  justify-self: center;
+  margin-top: -20px;
+}
+
+.msg-title {
+  font-weight: bold;
+}
+
+.chats {
+  overflow-y: auto; /* Add vertical scrollbar */
+  max-height: calc(100vh - 100px); /* Adjust max height as needed */
+}
+
+.requests-button {
+  text-decoration: none;
+  color: #302f2f;
 }

@@ -11,8 +11,10 @@ import {
   FaUser,
   FaEllipsisH,
 } from "react-icons/fa";
-import "./style.css";
-import SearchOverlay from "./search/SearchOverlay";
+import "../style.css";
+import SearchOverlay from "./SearchOverlay";
+import { Link } from "react-router-dom";
+import Explore from "../pages/Explore";
 //import Explore from "./explore/Explore";
 
 const SideMenu = () => {
@@ -22,6 +24,7 @@ const SideMenu = () => {
   const [currentImage, setCurrentImage] = useState(instaLogo); // Initial image source
   const [sideMenuWidth, setSideMenuWidth] = useState("250px");
   const [showOverlay, setShowOverlay] = useState(false);
+  const [activeMenuItem, setActiveMenuItem] = useState(null);
   //const [showExplorePage, setShowExplore] = useState(false);
 
   const toggleLabels = () => {
@@ -39,15 +42,27 @@ const SideMenu = () => {
     setShowExplore(!showExplorePage);
   }; */
 
+  const handleClick = (index) => {
+    setActiveMenuItem(index);
+  };
+
   const menu = [
-    { label: "Home", icon: <FaHome size={24} /> },
-    { label: "Search", icon: <FaSearch size={24} /> },
-    { label: "Explore", icon: <FaCompass size={24} /> },
-    { label: "Reels", icon: <FaPlay size={24} /> },
-    { label: "Messages", icon: <FaEnvelope size={24} /> },
-    { label: "Notifications", icon: <FaBell size={24} /> },
-    { label: "Create", icon: <FaPlusSquare size={24} /> },
-    { label: "Profile", icon: <FaUser size={24} /> },
+    { label: "Home", icon: <FaHome size={24} />, to: "/" },
+    { label: "Search", icon: <FaSearch size={24} />, to: "/search" },
+    {
+      label: "Explore",
+      icon: <FaCompass size={24} />,
+      to: "/explore",
+    },
+    { label: "Reels", icon: <FaPlay size={24} />, to: "/reels" },
+    { label: "Messages", icon: <FaEnvelope size={24} />, to: "/messages" },
+    {
+      label: "Notifications",
+      icon: <FaBell size={24} />,
+      to: "/notifications",
+    },
+    { label: "Create", icon: <FaPlusSquare size={24} />, to: "/create" },
+    { label: "Profile", icon: <FaUser size={24} />, to: "/profile" },
     {
       label: "Threads",
       icon: <FaEnvelope size={24} />,
@@ -77,16 +92,16 @@ const SideMenu = () => {
             {menu.map((item, index) => {
               if (item.label === "Search") {
                 return (
-                  <li key={index} className={item.specialClass}>
+                  <li key={index} className="search">
                     <div className="icon-label-wrapper" onClick={toggleLabels}>
                       {item.icon}
                       {showLabels && (
-                        <a
-                          href={`#${item.label.toLowerCase()}`}
+                        <div
+                          className="label"
                           onClick={item.onClick || (() => {})}
                         >
                           {item.label}
-                        </a>
+                        </div>
                       )}
                     </div>
                   </li>
@@ -94,17 +109,24 @@ const SideMenu = () => {
               } else {
                 return (
                   <li key={index} className={item.specialClass}>
-                    <div className="icon-label-wrapper">
-                      {item.icon}
-                      {showLabels && (
-                        <a
-                          href={`#${item.label.toLowerCase()}`}
-                          onClick={item.onClick || (() => {})}
-                        >
-                          {item.label}
-                        </a>
-                      )}
-                    </div>
+                    <Link to={item.to}>
+                      <div
+                        className={`icon-label-wrapper ${
+                          activeMenuItem === index ? "active" : ""
+                        }`}
+                        onClick={() => handleClick(index)}
+                      >
+                        {item.icon}
+                        {showLabels && (
+                          <a
+                            href={`/${item.label.toLowerCase()}`}
+                            onClick={item.onClick || (() => {})}
+                          >
+                            {item.label}
+                          </a>
+                        )}
+                      </div>
+                    </Link>
                   </li>
                 );
               }

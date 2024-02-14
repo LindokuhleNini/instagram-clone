@@ -1,7 +1,7 @@
 import React from "react";
 import "../style.css";
 
-const Profile = () => {
+const ChatCard = () => {
   return (
     <div className="profile-container">
       <div className="profile-info">
@@ -12,12 +12,11 @@ const Profile = () => {
         />
         <div className="user-details">
           <span className="username">Username</span>
-          <span className="full-name">Full Name</span>
+          <span className="chat-history">You: I loved that picture</span>
         </div>
       </div>
-      <button className="switch-button">Switch</button>
     </div>
   );
 };
 
-export default Profile;
+export default ChatCard;
