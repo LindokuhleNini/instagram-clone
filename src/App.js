@@ -8,12 +8,14 @@ import Notifications from "./pages/Notifications";
 import Create from "./pages/Create";
 import Profile from "./pages/Profile";
 import Suggestions from "./pages/Suggestions";
+import LoginPage from "./pages/Login";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Home />} />
+        <Route index element={<LoginPage />} />
+        <Route path="/login" element={<Home />} />
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/explore" element={<Explore />} />

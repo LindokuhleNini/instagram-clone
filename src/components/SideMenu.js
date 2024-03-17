@@ -13,19 +13,20 @@ import {
 } from "react-icons/fa";
 import "../style.css";
 import SearchOverlay from "./SearchOverlay";
+import NotificationOverlay from "./NotificationOverlay";
+import CreateOverlay from "./CreateOverlay";
 import { Link } from "react-router-dom";
-import Explore from "../pages/Explore";
-//import Explore from "./explore/Explore";
 
 const SideMenu = () => {
   let instaLogo =
     "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png";
   const [showLabels, setShowLabels] = useState(true);
   const [currentImage, setCurrentImage] = useState(instaLogo); // Initial image source
-  const [sideMenuWidth, setSideMenuWidth] = useState("250px");
+  const [sideMenuWidth, setSideMenuWidth] = useState("17%");
   const [showOverlay, setShowOverlay] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState(null);
-  //const [showExplorePage, setShowExplore] = useState(false);
+  const [notificationOverlay, setNotificationOverlay] = useState(false);
+  const [showCreateOverlay, setCreateShowOverlay] = useState(false);
 
   const toggleLabels = () => {
     setShowLabels(!showLabels);
@@ -38,16 +39,31 @@ const SideMenu = () => {
     setShowOverlay(!showOverlay);
   };
 
-  /*  const openExplorePage = () => {
-    setShowExplore(!showExplorePage);
-  }; */
+  const openNotifications = () => {
+    setShowLabels(!showLabels);
+    setCurrentImage(
+      currentImage === instaLogo
+        ? "https://i.pinimg.com/originals/7d/bd/0b/7dbd0b51c20a695901a84c4c083500f6.png"
+        : instaLogo
+    );
+    setSideMenuWidth(showLabels ? "auto" : "250px");
+    setNotificationOverlay(!notificationOverlay);
+  };
 
   const handleClick = (index) => {
     setActiveMenuItem(index);
   };
 
+  const toggleCreateOverlay = () => {
+    setCreateShowOverlay(!showCreateOverlay);
+  };
+
+  /* const handleCloseCreateOverlay = () => {
+    setCreateShowOverlay(false);
+  }; */
+
   const menu = [
-    { label: "Home", icon: <FaHome size={24} />, to: "/" },
+    { label: "Home", icon: <FaHome size={24} />, to: "/home" },
     { label: "Search", icon: <FaSearch size={24} />, to: "/search" },
     {
       label: "Explore",
@@ -106,6 +122,44 @@ const SideMenu = () => {
                     </div>
                   </li>
                 );
+              } else if (item.label === "Notifications") {
+                return (
+                  <li key={index} className="search">
+                    <div
+                      className="icon-label-wrapper"
+                      onClick={openNotifications}
+                    >
+                      {item.icon}
+                      {showLabels && (
+                        <div
+                          className="label"
+                          onClick={item.onClick || (() => {})}
+                        >
+                          {item.label}
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                );
+              } else if (item.label === "Create") {
+                return (
+                  <li key={index} className="search">
+                    <div
+                      className="icon-label-wrapper"
+                      onClick={toggleCreateOverlay}
+                    >
+                      {item.icon}
+                      {showLabels && (
+                        <div
+                          className="label"
+                          onClick={item.onClick || (() => {})}
+                        >
+                          {item.label}
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                );
               } else {
                 return (
                   <li key={index} className={item.specialClass}>
@@ -135,6 +189,11 @@ const SideMenu = () => {
         </div>
       </div>
       <SearchOverlay showOverlay={showOverlay} />
+      <NotificationOverlay showNotifications={notificationOverlay} />
+      <CreateOverlay
+        showCreateOverlay={showCreateOverlay}
+        onClose={toggleCreateOverlay}
+      />
     </>
   );
 };

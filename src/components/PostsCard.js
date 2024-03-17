@@ -2,27 +2,19 @@ import React from "react";
 import { FaHeart, FaComment, FaShare, FaBookmark } from "react-icons/fa";
 import "../style.css";
 
-const PostContainer = () => {
+const PostContainer = ({ profile_p, image_url, username }) => {
   return (
     <div className="post-container">
       {/* User info */}
       <div className="user-info">
-        <img
-          src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA0LzQ3OS1tay05NjkwLWpvYjU4My1rc2lkc3B3Mi5qcGc.jpg"
-          alt="Profile"
-          className="profile-picture"
-        />
-        <span className="username">Username</span>
+        <img src={profile_p} alt="Profile" className="profile-picture" />
+        <span className="username">{username}</span>
         <span className="three-dots">...</span>
       </div>
 
       {/* Post content */}
       <div className="post-content">
-        <img
-          src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA0LzQ3OS1tay05NjkwLWpvYjU4My1rc2lkc3B3Mi5qcGc.jpg"
-          alt="Post"
-          className="post-image"
-        />
+        <img src={image_url} alt="Post" className="post-image" />
       </div>
 
       {/* Action icons */}

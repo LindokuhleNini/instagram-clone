@@ -14,9 +14,9 @@ const SearchOverlay = ({ showOverlay }) => {
     setRecentSearches((prevSearches) => [searchQuery, ...prevSearches]);
   }; */
 
-  const handleClearRecentSearches = () => {
+  /* const handleClearRecentSearches = () => {
     setRecentSearches([]);
-  };
+  }; */
 
   return (
     <div className={`overlay ${showOverlay ? "show" : ""}`}>

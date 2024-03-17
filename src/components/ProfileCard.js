@@ -11,11 +11,13 @@ const ProfileCard = () => {
           className="profile-picture"
         />
         <div className="user-details">
-          <span className="username">Username</span>
-          <span className="full-name">Full Name</span>
+          <span className="username">supermario_</span>
+          <span className="full-name">Super Mario</span>
         </div>
       </div>
-      <button className="switch-button">Switch</button>
+      <a href="switch" className="switch-button">
+        Switch
+      </a>
     </div>
   );
 };
