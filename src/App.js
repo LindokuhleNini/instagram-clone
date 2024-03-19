@@ -16,6 +16,7 @@ function App() {
       <Routes>
         <Route index element={<LoginPage />} />
         <Route path="/login" element={<Home />} />
+        <Route path="/instagram-clone" element={<LoginPage />} />
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
