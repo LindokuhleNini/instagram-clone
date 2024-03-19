@@ -25,6 +25,7 @@ function App() {
         <Route path="/create" element={<Create />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/suggested" element={<Suggestions />} />
+        <Route path="/logout" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
   );

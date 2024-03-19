@@ -21,8 +21,8 @@ const LoginPage = () => {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png"
             alt="img"
           ></img>
-          <input type="text" placeholder="Username or Email" />
-          <input type="password" placeholder="Password" />
+          <input type="text" placeholder="Username or Email" required />
+          <input type="password" placeholder="Password" required />
           <Link to="/login" className="login-btn">
             <button type="submit">Login</button>
           </Link>

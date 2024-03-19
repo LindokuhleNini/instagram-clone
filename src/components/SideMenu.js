@@ -15,7 +15,7 @@ import "../style.css";
 import SearchOverlay from "./SearchOverlay";
 import NotificationOverlay from "./NotificationOverlay";
 import CreateOverlay from "./CreateOverlay";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const SideMenu = () => {
   let instaLogo =
@@ -27,6 +27,7 @@ const SideMenu = () => {
   const [activeMenuItem, setActiveMenuItem] = useState(null);
   const [notificationOverlay, setNotificationOverlay] = useState(false);
   const [showCreateOverlay, setCreateShowOverlay] = useState(false);
+  const location = useLocation();
 
   const toggleLabels = () => {
     setShowLabels(!showLabels);
@@ -163,7 +164,13 @@ const SideMenu = () => {
               } else {
                 return (
                   <li key={index} className={item.specialClass}>
-                    <Link to={item.to}>
+                    <Link
+                      to={item.to}
+                      style={{
+                        fontWeight:
+                          location.pathname === item.to ? "bold" : "normal",
+                      }}
+                    >
                       <div
                         className={`icon-label-wrapper ${
                           activeMenuItem === index ? "active" : ""

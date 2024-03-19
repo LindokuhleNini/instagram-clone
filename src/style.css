@@ -68,6 +68,10 @@ html {
   font-weight: bold;
 }
 
+li :active {
+  font-weight: bold;
+}
+
 .search {
   margin-top: 15px;
 }
@@ -172,6 +176,7 @@ li:not(.last-item) {
 .post-image {
   width: 468px;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .action-icons {
@@ -197,6 +202,15 @@ li:not(.last-item) {
 
 .post-caption {
   margin-bottom: 8px;
+}
+
+.action-icons .icon,
+.action-icons .save-icon {
+  fill: white; /* Set the inside color to white */
+  stroke: rgb(0, 0, 0); /* Set the outline color to grey */
+  stroke-width: 17px; /* Adjust outline thickness as needed */
+  width: 20px;
+  height: auto;
 }
 
 .profile-container {

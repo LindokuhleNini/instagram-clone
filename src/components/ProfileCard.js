@@ -15,8 +15,8 @@ const ProfileCard = () => {
           <span className="full-name">Super Mario</span>
         </div>
       </div>
-      <a href="switch" className="switch-button">
-        Switch
+      <a href="logout" className="switch-button">
+        Logout
       </a>
     </div>
   );
